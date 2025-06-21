@@ -768,7 +768,12 @@
                     </h4>
                 </div>
             </template>
-            <CodeEdit ref="codeEditRef" lang="javascript" />
+            <CodeEdit
+                ref="codeEditRef"
+                lang="javascript"
+                height="400px"
+                :code="store.currentProject.customJs"
+            />
         </el-dialog>
         <!-- img preview -->
         <ImgPreview
@@ -1159,7 +1164,7 @@ const fileToBase64 = (file: any) => {
 const loadHtml = async () => {
     console.log('loadHtml')
     store.currentProject.isHtml = true
-    const selected = await openSelect([])
+    const selected = await openSelect(true, [])
     console.log('selected', selected)
     if (selected) {
         const indexHtml = await join(selected, 'index.html')
